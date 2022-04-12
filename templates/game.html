@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="/madlib">
+    Provide the name of a person: <input type="text" name="person"><br>
+    Provide a color: <input type="text" name="color"><br>
+    Provide a noun: <input type="text" name="noun"><br>
+    Provide an adjective: <input type="text" name="adjective"><br>
+
+    Select one:
+
+    <input type="checkbox" name="allergy" value="peanut">
+    <label for="peanut">Peanut</label>
+
+    <input type="checkbox" name="allergy" value="pollen">
+    <label for="pollen">Pollen</label>
+
+    <input type="checkbox" name="allergy" value="dander">
+    <label for="dander">Dander</label><br>
+
+    <input type="submit">
+</form>
+
+{% endblock %}
