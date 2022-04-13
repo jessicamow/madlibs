@@ -3,8 +3,30 @@
 {% block content %}
 <p id="grand-finale">
 
-There once was a {{ color }} {{ noun }} who was allergic to <span>{{ allergy }}</span>
-sitting in the Hackbright Lab. When {{ person }} went to pick it up, 
+There once was a {{ color }} {{ noun }} who was allergic to 
+
+{% set length = allergies|length %}
+
+    <span>
+    {% for allergy in allergies %}
+
+        {% if loop.index != length and length > 2 %}
+
+            <!-- {{ loop.index }}
+            {{ allergies|length }} -->
+            {{ allergy + ", " }}
+        
+        {% elif loop.index == length and length != 1 %}    
+            {{ " and " + allergy}}
+        {% else %}
+            {{ allergy }}
+
+        {% endif %}
+    
+        {% endfor %}
+    </span>
+
+ sitting in the Hackbright Lab. When {{ person }} went to pick it up, 
 it burst into flames in a totally {{ adjective }} way.
 
 </p>

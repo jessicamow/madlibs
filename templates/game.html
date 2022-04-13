@@ -2,7 +2,17 @@
 
 {% block content %}
 
-<form action="/madlib">
+<form action="/madlib", method="GET">
+
+    *** Generate A Random Madlib ***
+    <input type="submit" value="get">
+
+</form>
+
+<form action="/madlib", method='POST'>
+
+    *** Build Your Own Madlib ***
+
     Provide the name of a person: <input type="text" name="person"><br>
     Provide a color: <input type="text" name="color"><br>
     Provide a noun: <input type="text" name="noun"><br>
@@ -10,13 +20,13 @@
 
     Select one:
 
-    <input type="checkbox" name="allergy" value="peanut">
+    <input type="checkbox" name="allergy0" value="peanut">
     <label for="peanut">Peanut</label>
 
-    <input type="checkbox" name="allergy" value="pollen">
+    <input type="checkbox" name="allergy1" value="pollen">
     <label for="pollen">Pollen</label>
 
-    <input type="checkbox" name="allergy" value="dander">
+    <input type="checkbox" name="allergy2" value="dander">
     <label for="dander">Dander</label><br>
 
     <input type="submit">

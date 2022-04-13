@@ -62,23 +62,45 @@ def show_madlib_form():
     else:
         return render_template("goodbye.html")
 
-@app.route("/madlib")
+@app.route("/madlib", methods=["POST", "GET"])
 def show_madlib():
     """Display the madlib"""
 
-    person = request.args.get("person")
-    color = request.args.get("color")
-    noun = request.args.get("noun")
-    adjective = request.args.get("adjective")
-    allergy = request.args.get("allergy")
-    print(allergy)
+    if request.method == "GET":
+        
+        return render_template("genericmadlib.html")
 
-    return render_template("madlib.html", 
-                            person=person,
-                            color=color,
-                            noun=noun,
-                            adjective=adjective,
-                            allergy=allergy)
+    else: 
+        
+        ALLERGIES = []
+
+        person = request.form.get("person")
+        color = request.form.get("color")
+        noun = request.form.get("noun")
+        adjective = request.form.get("adjective")
+
+        allergy0 = request.form.get("allergy0")
+
+        if allergy0 != None: 
+            ALLERGIES.append(allergy0)
+
+        allergy1 = request.form.get("allergy1")
+
+        if allergy1 != None: 
+            ALLERGIES.append(allergy1)
+
+        allergy2 = request.form.get("allergy2")
+        
+        if allergy2 != None: 
+            ALLERGIES.append(allergy2)
+        
+
+        return render_template("madlib.html", 
+                                person=person,
+                                color=color,
+                                noun=noun,
+                                adjective=adjective,
+                                allergies=ALLERGIES)
 
 
 if __name__ == "__main__":
